@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../templates/header") -%>
+    <link href="css/custom-notifs.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include("../templates/sidebar") -%> 
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <%- include("../templates/topbar") -%> 
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <% if (messages.success) { %>
+                        <div class="alert alert-success alert-white rounded">
+                            <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                            <div class="icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <strong>Success!</strong> 
+                            <%= messages.success %>
+                        </div>
+                    <% } %>
+                    <% if (messages.error) { %>
+                        <div class="alert alert-danger alert-white rounded">
+                            <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                            <div class="icon">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+                            <strong>Error!</strong> 
+                            <%= messages.error %>
+                        </div>
+                    <% } %>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <%- include("../templates/footer") -%> 
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <%- include("../templates/scripts") -%>
+
+</body>
+
+</html>

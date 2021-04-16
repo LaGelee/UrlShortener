@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../../templates/header") -%>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include("../../templates/sidebar") -%> 
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <%- include("../../templates/topbar") -%> 
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">List of Urls</h1>
+                    </div>
+                    <!-- End of Page Heading -->
+
+                    <!-- Page Elements -->
+                    <div class="row justify-content-center">
+
+                        <% if (url_list.length > 0) { %> 
+                        
+                            <!-- Begin URLS Tab -->
+                            <div class="col-xl-7 col-lg-7 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">URL DataTable</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="table" class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full</th>
+                                                    <th>Short</th>
+                                                    <th>Clicks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% url_list.forEach(Url => { %>
+                                                    <tr>
+                                                        <td class="col-sm-5"><a href="<%= Url.full %>"><%= Url.full %></a></td>
+                                                        <td class="col-sm-5"><a href="/urls/<%= Url.short %>"><%= Url.short %></a></td>
+                                                        <td class="col-sm-1"><%= Url.clicks %></td>
+                                                    </tr>
+                                                <%})%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of URLS Tab -->
+
+                            <!-- Begin Stats -->
+                            <div class="col-xl-5 col-lg-5">
+
+                                <!-- Begin NUMBER-->
+                                <div class="mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-lg font-weight-bold text-warning text-uppercase mb-1">
+                                                        Number of links</div>
+                                                    <div class="h3 mb-0 font-weight-bold text-gray-800"><%= stats.NBR %></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-calculator fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of NUMBER-->
+
+                                <!-- Begin AVERAGE-->
+                                <div class="mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-lg font-weight-bold text-primary text-uppercase mb-1">
+                                                        Average number of clicks</div>
+                                                    <div class="h3 mb-0 font-weight-bold text-gray-800"><%= stats.CLICKS %></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-mouse-pointer  fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of AVERAGE-->
+
+                            </div>
+                            <!-- End of Stats-->
+                        
+                        <% } else { %> 
+                            <div class="h1 mb-0 font-weight-bold text-gray-800">NO DATA IN THE DB</div>
+                        <% } %> 
+
+                    </div>
+                    <!-- End of Page Elements -->
+
+                </div>
+                <!-- End of Page Content -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <%- include("../../templates/footer") -%>
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <%- include("../../templates/scripts") -%>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $('#table').DataTable();
+        } );
+
+    </script>
+
+
+</body>
+
+</html>

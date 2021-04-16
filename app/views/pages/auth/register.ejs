@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../../templates/header") -%>
+</head>
+
+<body class="bg-gradient-orange">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <img src="img/urlshortener.png" alt="" class="col-lg-6 d-none d-lg-block">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form class="user" action="/auth/register" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control form-control-user" id="username"
+                                        placeholder="Username">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="name" class="form-control form-control-user" id="name"
+                                            placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="lastname" class="form-control form-control-user" id="lastname"
+                                            placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control form-control-user" id="email"
+                                        placeholder="Email Address">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" name="password" class="form-control form-control-user"
+                                            id="password" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" name="repeatpassword" class="form-control form-control-user"
+                                            id="repeatpassword" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger btn-user btn-block">Register account</button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small text-danger" href="login">Already have an account? Login!</a>
+                            </div>
+                            <div class="text-center">
+                                <a href="/" class="text-danger small">&larr; Return to Home</a>
+                            </div>
+                            <% if (messages.error) { %>
+                                <div class="card bg-danger text-white shadow">
+                                    <div class="card-body">
+                                        Error
+                                        <div class="text-white-50"><%= messages.error %></div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include("../../templates/scripts") -%>
+
+</body>
+
+</html>
